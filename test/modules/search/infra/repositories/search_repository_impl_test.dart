@@ -29,6 +29,6 @@ void main() {
 
     final result = await repository.search("zellner");
 
-    expect(result.fold(id, id), isA<List<ResultSearch>>());
+    expect(result.fold(id, id), isA<DatasourceError>());
   });
 }

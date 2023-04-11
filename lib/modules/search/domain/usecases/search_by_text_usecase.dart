@@ -3,11 +3,11 @@ import 'package:dartz/dartz.dart';
 import 'package:flutterando_clean_arch/modules/search/domain/errors/erros.dart';
 import 'package:flutterando_clean_arch/modules/search/domain/repositories/search_repository.dart';
 
-abstract class SearchByTextUsecase {
+abstract class SearchByText {
   Future<Either<FailureSearch,List<ResultSearch>>> call(String seachText);
 }
 
-class SearchByTextImpl implements SearchByTextUsecase {
+class SearchByTextImpl implements SearchByText {
 
   final SearchRepository repository;
 
