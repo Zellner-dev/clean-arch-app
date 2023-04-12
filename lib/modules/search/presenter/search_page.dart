@@ -13,12 +13,10 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
 
-  // final bloc = Modular.get<SearchBloc>();
 
   @override
   void dispose() {
     super.dispose();
-    // bloc.close();
   }
 
   @override
@@ -33,12 +31,11 @@ class _SearchPageState extends State<SearchPage> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: TextField(
               onSubmitted: (value) {
                 log("message");
                 provider.search(value);
-                // bloc.add(GetSearch(value));
               },
               keyboardType: TextInputType.text,
               decoration: const InputDecoration(
@@ -52,8 +49,24 @@ class _SearchPageState extends State<SearchPage> {
               itemCount: provider.list.length,
               itemBuilder: (context, index) {
                 final item = provider.list[index];
-                return ListTile(
-                  title: Text(item.title),
+                return Card(
+                  margin: EdgeInsets.only(
+                    left: 8,
+                    right: 8,
+                    top: index == 0
+                      ? 0
+                      : 8,
+                    bottom: index + 1 == provider.list.length
+                      ? 8
+                      : 0
+                  ),
+                  child: ListTile(
+                    leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(1000),
+                      child: Image.network(item.img)),
+                    title: Text(item.title),
+                    subtitle: Text(item.content),
+                  ),
                 );
               }
             )
