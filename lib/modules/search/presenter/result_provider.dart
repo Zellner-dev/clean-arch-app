@@ -7,6 +7,7 @@ import 'package:flutterando_clean_arch/modules/search/domain/usecases/search_by_
 class ResultSearchProvider with ChangeNotifier {
 
   final SearchByText usecase;
+  bool estadoInicial = true;
 
   ResultSearchProvider({required this.usecase});
   
@@ -18,7 +19,7 @@ class ResultSearchProvider with ChangeNotifier {
       (l) => list = [], 
       (r) => list = r
     );
-    log(list.length.toString());
+    estadoInicial = false;
     notifyListeners();
   }
 
